@@ -7,14 +7,16 @@ const cookieSession = require('cookie-session');
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  if (!process.env.NODE_ENV) {
+    createSwaggerDocument(app);
+  }
+
   app.use(
     cookieSession({
       keys: ['asdfsdfsdf'],
     }),
   );
-  if (!process.env.NODE_ENV) {
-    createSwaggerDocument(app);
-  }
 
   app.useGlobalPipes(
     new ValidationPipe({
