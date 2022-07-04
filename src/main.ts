@@ -5,7 +5,7 @@ import { createSwaggerDocument } from './swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  if (!process.env.NODE_ENV) {
+  if (process.env.NODE_ENV === 'development') {
     createSwaggerDocument(app);
   }
 
