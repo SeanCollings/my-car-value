@@ -1,0 +1,35 @@
+Request
+||
+\/
+Cookie-Session Middleware
+||
+\/
+AdminGuard
+||
+||<------------------------------
+\/                              |
+Request Handler    |    CurrentUserInterceptor
+||                              |
+||<------------------------------
+\/
+Response
+
+-----------------------------------------------
+-----------------| In general |----------------
+-----------------------------------------------
+
+Request
+||
+\/
+Middlewares
+||
+\/
+Guards
+||
+||<---------------------------
+\/                           |
+Request Handler    |    Interceptors
+||                           |
+||<---------------------------
+\/
+Response
