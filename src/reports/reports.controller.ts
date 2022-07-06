@@ -28,19 +28,19 @@ import { ReportsService } from './reports.service';
 
 @Controller('reports')
 @ApiTags('reports')
-@Serialize(ReportDTO)
 export class ReportsController {
   constructor(private reportsService: ReportsService) {}
 
   @Get('/')
   @SwaggerGetEstimate()
   getEstimate(@Query() query: GetEstimateDTO) {
-    console.log(query);
+    return this.reportsService.createEstimate(query);
   }
 
   @Post('/')
   @SwaggerCreateReport()
   @UseGuards(AuthGuard)
+  @Serialize(ReportDTO)
   async createReport(
     @Body() body: CreateReportDTO,
     @CurrentUser() user: User,
@@ -52,6 +52,7 @@ export class ReportsController {
   @Patch('/:id')
   @UseGuards(AdminGuard)
   @SwaggerApproveReport()
+  @Serialize(ReportDTO)
   approveReport(
     @Param('id', ParseIntPipe) id: number,
     @Body() body: ApproveReportDTO,
