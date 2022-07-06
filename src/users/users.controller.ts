@@ -19,7 +19,7 @@ import { Serialize } from '../interceptors/serialize.interceptor';
 import { AuthService } from './auth.service';
 import { CurrentUser } from './decorators/current-user.decorator';
 import { CreateUserDTO } from './dtos/create-user.dto';
-import { UpdateUserDto } from './dtos/update-user.dto';
+import { UpdateUserDTO } from './dtos/update-user.dto';
 import { UserDTO } from './dtos/user.dto';
 // import { CurrentUserInterceptor } from './interceptors/current-user.intereceptor';
 import { User } from './user.entity';
@@ -111,7 +111,7 @@ export class UsersController {
   @SwaggerUpdateUser()
   updateUser(
     @Param('id', ParseIntPipe) id: number,
-    @Body() body: UpdateUserDto,
+    @Body() body: UpdateUserDTO,
   ): Promise<UserDTO> {
     return this.usersService.update(id, body);
   }
