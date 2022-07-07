@@ -34,6 +34,7 @@ import {
   SwaggerWhoAmI,
 } from './user.swagger';
 import { UsersService } from './users.service';
+import { logger as myCustomLogger } from '@seancollings/hello-world-ghp';
 
 @Serialize(UserDTO)
 // @UseInterceptors(CurrentUserInterceptor) // to just use this intercerptor for this controller
@@ -55,7 +56,7 @@ export class UsersController {
   @UseGuards(AuthGuard)
   @SwaggerWhoAmI()
   whoAmI(@CurrentUser() user: User): UserDTO {
-    console.log(user);
+    myCustomLogger('1.0.11');
     // we serialize the response to return UserDTO and remove password
     return user as UserDTO;
   }

@@ -1,0 +1,7 @@
+### generate migration file
+
+npm run typeorm migration:generate ./migrations/{MIGRATION_NAME} -- -o -d db.datasource.ts
+
+### run migration
+
+npm run typeorm migration:run -- -d ./db.datasource.ts

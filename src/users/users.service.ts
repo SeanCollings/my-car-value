@@ -18,11 +18,7 @@ export class UsersService {
       return null;
     }
 
-    try {
-      return await this.repo.findOneByOrFail({ id });
-    } catch {
-      throw new NotFoundException('User not found');
-    }
+    return this.repo.findOne({ where: { id } });
   }
 
   find(email: string) {
